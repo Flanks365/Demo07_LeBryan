@@ -39,19 +39,7 @@ function readQuote(day) {
 readQuote("tuesday");        //calling the function
 // Function to read the quote of the day from Firestore "quotes" collection
 // Input param is the String representing the day of the week, aka, the document name
-function readQuote(day) {
-    db.collection("quotes").doc(day)                                                      //name of the collection and documents should matach excatly with what you have in Firestore
-      .onSnapshot(dayDoc => {                                                               //arrow notation
-           console.log("current document data: " + dayDoc.data());                          //.data() returns data object
-           document.getElementById("quote-goes-here").innerHTML = dayDoc.data().quote;      //using javascript to display the data on the right place
-           
-           //Here are other ways to access key-value data fields
-           //$('#quote-goes-here').text(dayDoc.data().quote);         //using jquery object dot notation
-           //$("#quote-goes-here").text(dayDoc.data()["quote"]);      //using json object indexing
-		       //document.querySelector("#quote-goes-here").innerHTML = dayDoc.data().quote;
-      })
-}
-readQuote("monday");        //calling the function
+
 function writeHikes() {
     //define a variable for the collection you want to create in Firestore to populate data
     var hikesRef = db.collection("hikes");
@@ -96,7 +84,6 @@ function writeHikes() {
         last_updated: firebase.firestore.Timestamp.fromDate(new Date("January 1, 2023"))
     });
 }
-writeHikes();         //if you used method 1
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
 //------------------------------------------------------------------------------
